@@ -24,12 +24,11 @@ public class Controller {
 
     // method to add course opening
     public void addCourseOpening(String Id, String AcademicYear, String Semester, String LecturerInitial) {
-        // metode untuk membuka kursus
 
-        CourseOpening courseOpening = new CourseOpening(Id, AcademicYear, Semester, LecturerInitial);
-        courseOpenings.add(courseOpening);
+    // metode untuk membuka kursus
+     CourseOpening courseOpening = new CourseOpening(Id, AcademicYear, Semester, LecturerInitial);
+      courseOpenings.add(courseOpening);
 
-        //System.out.println(courseOpening.getId() + courseOpening.getAcademicYear()+ "aaaaaaaaaaaaaaa");
 
         Course course = courses.stream()
             .filter(c -> c.getCourseId().equals(Id))
@@ -39,7 +38,6 @@ public class Controller {
         courseOpening.setSKS(course.getCredits());
         courseOpening.setGrade(course.getPassingGrade());
 
-        // System.out.println(courseOpening.getMatakuliah() + "|");
 
         String[] lecturersArray = LecturerInitial.split(",");
         for (int i = 0; i < lecturersArray.length; i++) {
@@ -83,14 +81,6 @@ public class Controller {
                         System.out.println(enrollment.getCourseId() + "|" + enrollment.getStudentId() + "|" + enrollment.getAcademicYear() + "|" + enrollment.getSemester() + "|" + enrollment.getGrade());
                     }                 
                 }
-                // Student student = students.stream()
-                // .filter(s -> s.getId().equals(enrollment.getStudentId()))
-                // .findFirst()
-                // .orElse(null);
-                
-                // if (student != null) {
-                //     System.out.println(courseId + "|" + student.getId() + "|" + enrollment.getAcademicYear() + "|" + enrollment.getSemester() + "|" + enrollment.getGrade());
-                // }
             }
         }
     }
@@ -108,6 +98,33 @@ public class Controller {
             students.add(newStudent);
         }
     }
+
+//     // Metode mencari student berdasarkan Semester
+//     List <Student> oddIdStudents = new ArrayList<>();
+//     List <Student> evenIdStudents = new ArrayList<>();
+
+//     public Student findBestStudent(Student[]students){
+//         String BestId = findBestStudent 
+//     for(Student student: students){
+//         if (student.getId()%2==0){
+//             evenIdStudents.add(student;)
+//         } else{
+//             oddIdStudents.add(student);
+//         }
+//     }
+//     }
+//     Student bestOddIdStudent = findBestStudentInList(oddIdStudents);
+//     Student bestEvenIdStudent = findbestStudentInList(evenIdStudents);
+
+//     return bestOddIdStudent.calculateTotalScore()>=bestEvenIdStudent
+
+// //     private Student findBestStudentInList(List<Student>students) {
+// //             if (students.isEmpty()) {
+// //         return null;
+// //     }
+    
+// // }
+     
 
     // method to add enrollment
     public void addEnrollment(String courseId, String studentId, String academicYear, String semester) {
