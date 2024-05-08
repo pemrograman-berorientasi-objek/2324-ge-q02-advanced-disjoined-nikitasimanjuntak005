@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 /**
  * @author 12S22005 Nikita Simanjuntak
+ * @author 12S22021 Krisnia Calysta Siahaan
  */
+
 public class Enrollment {
 
     // class definition

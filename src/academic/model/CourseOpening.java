@@ -1,11 +1,15 @@
 package academic.model;
 
+/**
+ * @author 12S22005 Nikita Simanjuntak
+ * @author 12S22021 Krisnia Calysta Siahaan
+ */
+
 public class CourseOpening {
     private String Id;
     private String AcademicYear;
     private String Semester;
     private String LecturerInitial;
-    
     private String Matakuliah;
     private int SKS;
     private String Grade;
@@ -87,5 +91,10 @@ public class CourseOpening {
 
     public void setSKS(int SKS) {
         this.SKS = SKS;
+    }
+
+    public Object getCourseId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCourseId'");
     }
 }

@@ -4,12 +4,12 @@ package academic.driver;
  */
 
 import java.util.Scanner;
-import academic.model.Controller;
-import academic.model.Course;
-import academic.model.Enrollment;
-import academic.model.Student;
-import academic.model.Lecturer;
-import academic.model.CourseOpening;
+import academic.model.*;
+
+/**
+ * @author 12S22005 Nikita Simanjuntak
+ * @author 12S22021 Krisnia Calysta Siahaan
+ */
 
 public class Driver1 {
     public static void main(String[] args) {
@@ -48,6 +48,12 @@ public class Driver1 {
                 case "enrollment-remedial":
                     controller.remedialGrade(tokens[1], tokens[2], tokens[3], tokens[4], tokens[5]);
                     break;
+                case "find-the-best-student":
+                    controller.findTheBestStudent(tokens[1],tokens[2]);
+                    break;
+                case "add-best-student":
+                    // controller.addBestStudent(tokens[1]);
+                    break;
             }
         }
         
@@ -66,6 +72,10 @@ public class Driver1 {
  
          for (Enrollment enrollment : controller.enrollments) {
              System.out.println(enrollment);
+         }
+
+         for (String bestStudent : controller.bestStudents) {
+            System.out.println(bestStudent.toString());
          }
  
          scanner.close();

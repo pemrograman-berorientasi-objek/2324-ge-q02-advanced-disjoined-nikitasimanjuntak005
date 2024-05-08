@@ -2,7 +2,9 @@ package academic.model;
 
 /**
  * @author 12S22005 Nikita Simanjuntak
+ * @author 12S22021 Krisnia Calysta Siahaan
  */
+
 
 public class Student extends Person {
     private int enrollmentYear;
@@ -56,6 +58,16 @@ public class Student extends Person {
 
     public void setTotalCredit(Integer totalCredit) {
         this.totalCredit = totalCredit;
+    }
+
+    public double studentgpa(String academicYear, String semester) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'studentgpa'");
+    }
+
+    public String get(String academicYear, String semester) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get'");
     }
 
  }

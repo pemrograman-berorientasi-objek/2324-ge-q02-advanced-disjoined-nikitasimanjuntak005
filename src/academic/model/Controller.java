@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author 12S22005 Nikita Simanjuntak
+ * @author 12S22021 Krisnia Calysta Siahaan
  */
 
 public class Controller {
@@ -16,11 +17,17 @@ public class Controller {
     public static ArrayList<Enrollment> savedetailsStudent = new ArrayList<>();
     public ArrayList<CourseOpening> courseOpenings = new ArrayList<>();
 
+    public ArrayList<String> bestStudents = new ArrayList<>();
+
     // method to add course
     public void addCourse(String courseId, String courseName, int credits, String passingGrade) {
         Course newCourse = new Course(courseId, courseName, credits, passingGrade);
         courses.add(newCourse);
     }
+
+    public static boolean isEven(String str) {
+        return Integer.parseInt(str.substring(str.length() - 2)) % 2 == 0;
+    }   
 
     // method to add course opening
     public void addCourseOpening(String Id, String AcademicYear, String Semester, String LecturerInitial) {
@@ -99,31 +106,48 @@ public class Controller {
         }
     }
 
-//     // Metode mencari student berdasarkan Semester
-//     List <Student> oddIdStudents = new ArrayList<>();
-//     List <Student> evenIdStudents = new ArrayList<>();
+    //metode findTheBestStudent
+    // String academicYear = inputArray[1];
+    // String semester = inputArray[2];
 
-//     public Student findBestStudent(Student[]students){
-//         String BestId = findBestStudent 
-//     for(Student student: students){
-//         if (student.getId()%2==0){
-//             evenIdStudents.add(student;)
-//         } else{
-//             oddIdStudents.add(student);
-//         }
-//     }
-//     }
-//     Student bestOddIdStudent = findBestStudentInList(oddIdStudents);
-//     Student bestEvenIdStudent = findbestStudentInList(evenIdStudents);
-
-//     return bestOddIdStudent.calculateTotalScore()>=bestEvenIdStudent
-
-// //     private Student findBestStudentInList(List<Student>students) {
-// //             if (students.isEmpty()) {
-// //         return null;
-// //     }
+    // for (Enrollment<String, String> enrollmentOdd : enrollments) {
+    //     if (enrollmentOdd.getTahun().equals(academicYear) && enrollmentOdd.getEven().equals("odd")) {
+    //         for (Enrollment<String, String> enrollmentEven : enrollments) {
+    //             if (enrollmentEven.getTahun().equals(academicYear) && enrollmentEven.getEven().equals("even") &&
+    //                     enrollmentEven.getNim().equals(enrollmentOdd.getNim())) {
+    //                 if (isEven(enrollmentEven.getNim())) {
+    //                     if (!enrollmentOdd.getEven2().equals(enrollmentEven.getEven2())) {
+    //                         String result = enrollmentOdd.getNim() + "|" + enrollmentOdd.getEven2() + "/" + enrollmentEven.getEven2();
+    //                         bestStudents.add(result);
+    //                     }   
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    // buatlah code diatas menjafi metode findTheBestStudent 
+    public void findTheBestStudent(String academicYear, String semester) {
+        List<Enrollment> oddEnrollments = enrollments.stream()
+            .filter(e -> e.getAcademicYear().equals(academicYear) && e.getSemester().equals("odd") && !isEven(e.getStudentId()))
+            .collect(Collectors.toList());
     
-// // }
+        List<Enrollment> evenEnrollments = enrollments.stream()
+            .filter(e -> e.getAcademicYear().equals(academicYear) && e.getSemester().equals("even") && isEven(e.getStudentId()))
+            .collect(Collectors.toList());
+    
+        for (Enrollment oddEnrollment : oddEnrollments) {
+            for (Enrollment evenEnrollment : evenEnrollments) {
+                if (oddEnrollment.getStudentId().equals(evenEnrollment.getStudentId())) {
+                    if (!oddEnrollment.getGrade().equals(evenEnrollment.getGrade())) {
+                        bestStudents.add(oddEnrollment.getStudentId() + "|" + oddEnrollment.getGrade() + "/" + evenEnrollment.getGrade());
+                    }
+                }
+            }
+            for (String bestStudent : bestStudents) {
+                System.out.println(bestStudent);
+            }
+        }
+    }
      
 
     // method to add enrollment
